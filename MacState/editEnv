@@ -5,8 +5,10 @@ if [ ! -f "$file" ]; then
     # echo $(cat $work_path/password.txt) |sudo -S 
     cp $work_path/password.txt /usr/local/bin/password.txt
     ln -s $work_path/macstate /usr/local/bin/macstate
+    echo "add macstate script to environment path"
 else
     rm /usr/local/bin/macstate
     # rm /usr/local/bin/password.txt
+    echo "delete macstate script"
 fi
 exit

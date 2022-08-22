@@ -1,5 +1,14 @@
 #!/bin/sh
-PATH="/usr/local/bin:$PATH"
-rar a -ep1 "$(dirname "$@")"/archive.rar "$@"
-echo "compress files successfully!"
+#!/bin/sh
+
+
+# targetFile=$1
+# if [ "${targetFile##*.}"x = "rar" ];then
+#     rar a -ep1 "~/Desktop/archive.rar" "${@:2}"
+# else
+#     rar a -ep1 "~/Desktop/archive.rar" "$@"
+# fi
+
+rar a -ep1 "Desktop/archive.rar" "$@"
+# mv archive.rar '/Desktop/archive.rar'
 exit
