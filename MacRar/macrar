@@ -10,5 +10,5 @@
 # fi
 
 rar a -ep1 "Desktop/archive.rar" "$@"
-# mv archive.rar '/Desktop/archive.rar'
+# rar a -ep1 -v1g "Desktop/archive.rar" "$@"
 exit
