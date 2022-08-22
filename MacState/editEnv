@@ -1,0 +1,12 @@
+#!/bin/sh
+work_path=$(dirname $0)
+file='/usr/local/bin/macstate'
+if [ ! -f "$file" ]; then
+    # echo $(cat $work_path/password.txt) |sudo -S 
+    cp $work_path/password.txt /usr/local/bin/password.txt
+    ln -s $work_path/macstate /usr/local/bin/macstate
+else
+    rm /usr/local/bin/macstate
+    # rm /usr/local/bin/password.txt
+fi
+exit

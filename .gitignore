@@ -132,3 +132,4 @@ dmypy.json
 #private
 .DS_Store
 *.code-workspace
+password.txt

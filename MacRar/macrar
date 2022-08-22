@@ -1,0 +1,5 @@
+#!/bin/sh
+PATH="/usr/local/bin:$PATH"
+rar a -ep1 "$(dirname "$@")"/archive.rar "$@"
+echo "compress files successfully!"
+exit
