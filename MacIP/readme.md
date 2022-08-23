@@ -1,0 +1,7 @@
+# MacIP
+- get your ip
+
+
+
+
+

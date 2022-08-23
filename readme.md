@@ -19,6 +19,7 @@ scripts only tested on MacOS Big Sur(11.6.7 )
 - MacState
 - MuteQQ
 - MacRar
+- MacIP
 
 ### to-do list
 
