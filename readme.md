@@ -27,6 +27,7 @@ scripts only tested on MacOS Big Sur(11.6.7 )
 - MuteQQ
 - MacRar
 - MacIP
+- [developing]QuickOpen
 **mac scripts**
 - [to be continued]
 

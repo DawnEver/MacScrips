@@ -1,0 +1,13 @@
+#!/bin/sh
+work_path=$(dirname $0)
+file='/usr/local/bin/macrar'
+if [ ! -f "$file" ]; then
+    # echo $(cat $work_path/password.txt) |sudo -S 
+    cp $work_path/password.txt /usr/local/bin/password.txt
+    ln -s $work_path/macrar /usr/local/bin/macrar
+    echo "add macrar script to environment path"
+else
+    rm /usr/local/bin/macrar
+    echo "delete macrar script"
+fi
+exit

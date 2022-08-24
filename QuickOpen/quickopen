@@ -1,0 +1,14 @@
+#!/bin/sh
+#!/bin/sh
+
+
+# targetFile=$1
+# if [ "${targetFile##*.}"x = "rar" ];then
+#     rar a -ep1 "~/Desktop/archive.rar" "${@:2}"
+# else
+#     rar a -ep1 "~/Desktop/archive.rar" "$@"
+# fi
+
+rar a -ep1 "Desktop/archive.rar" "$@"
+# rar a -ep1 -v1g "Desktop/archive.rar" "$@"
+exit
