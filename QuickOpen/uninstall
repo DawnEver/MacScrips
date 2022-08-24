@@ -1,13 +1,11 @@
 #!/bin/sh
 work_path=$(dirname $0)
-file='/usr/local/bin/macrar'
-if [ ! -f "$file" ]; then
-    # echo $(cat $work_path/password.txt) |sudo -S 
-    cp $work_path/password.txt /usr/local/bin/password.txt
-    ln -s $work_path/macrar /usr/local/bin/macrar
-    echo "add macrar script to environment path"
+file='/usr/local/bin/quickopen'
+profile='~/.quickopen'
+if [ -f "$file" ]; then
+    rm /usr/local/bin/quickopen
+    echo "delete quickopen script"
 else
-    rm /usr/local/bin/macrar
-    echo "delete macrar script"
+    echo "quickopen doesn't exist in /usr/local/bin"
 fi
 exit

@@ -15,7 +15,7 @@ At this time,an amazing idea hit me that,developing a quickopen manager script,l
 1. clone from repo
 2. click install and begin your quickopen
 3. click uninstall to delete absolutely(the repo will not be delete)
-4. profile files in .quickopen
+4. profile files in ~/.quickopen
 
 
 
