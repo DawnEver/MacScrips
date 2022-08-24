@@ -133,3 +133,4 @@ dmypy.json
 .DS_Store
 *.code-workspace
 password.txt
+.quickopen
