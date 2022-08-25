@@ -1,4 +1,62 @@
 # QuickOpen
+
+### Start
+1. clone from github
+2. click install and follow **Use QuickOpen**
+3. click uninstall to delete quickopen absolutely(the repo will not be delete)
+~~4. profile files in ~/.quickopen~~
+
+### Use QuickOpen
+
+- **create a new quickopen**
+  `quickopen -n [shotcut] [absolute path]`
+  `quickopen new [shotcut] [absolute path]`
+
+- **quickopen**
+  `quickopen [shotcut]`
+  `-[shotcut]`	(quickcut with a prefex "-" )
+  
+- **delete a quickopen**
+  `quickopen -d [shotcut]`
+  `quickopen del [shotcut]`
+
+- **delete all quickopens**
+  `quickopen -d all`
+  `quickopen del all`
+
+- **help**
+  show a quickopen's absolute path 
+  `quickopen -h [shotcut]`
+  `quickopen help [shotcut]`
+
+  show help
+  `quickopen -h`
+  `quickopen help`
+
+- **list**
+  'quickopen -l'
+  'quickopen list'
+
+- **version**
+  'quickopen -v'
+  'quickopen version'
+
+### attentiton
+~~Please give the quickopen name a shot before you name it to avoid unexcepted results.~~
+
+**Reserved Word**
+don't name a quickopen like these to avoid unexcepted results.
+
+- help,h
+
+- list,l
+
+- all,a
+
+- version,v
+
+### Log
+
 When I want to open a folder in the terminal deep in my Mac,I need to open its parent folders generation by generation.I believe my system is well-organized but maybe I need to open the project folder hundreds times in a developing cycle.
 
 What makes it worse is that I need reveal it in finder at the same time(In any case,macos is not all based on file system like linux).
@@ -11,62 +69,6 @@ At this time,an amazing idea hit me that,developing a quickopen manager script,l
 
 **NEED plus** a quickopen manager
 
-### Start
-1. clone from repo
-2. click install and begin your quickopen
-3. click uninstall to delete absolutely(the repo will not be delete)
-4. profile files in ~/.quickopen
+Hating files prefixed with "." accumulating in User path,I decided take a different route.
 
-
-
-
-### Use QuickOpen
-
-- **create a new quickopen**
-  `quickopen -n [shotcut] [absolute path]`
-  `quickopen new [shotcut] [absolute path]`
-
-- **quickopen**
-  `quickopen [shotcut]`
-
-- **delete a quickopen**
-  `quickopen -d [shotcut]`
-  `quickopen del [shotcut]`
-
-- **delete all quickopens**
-  `quickopen -d all`
-  `quickopen del all`
-
-- **help**
-	show a quickopen's absolute path 
-  `quickopen -h [shotcut]`
-  `quickopen help [shotcut]`
-	
-	show help
-  `quickopen -h`
-  `quickopen help`
-  
-- **list**
-	'quickopen -l'
-	'quickopen list'
-
-- **version**
-	'quickopen -v'
-	'quickopen version'
-	
-### attentiton
-Please give the quickopen name a shot before you name it to avoid unexcepted results.
-
-**Reserved Word**
-don't name a quickopen like these
-
-- help
-
-- list
-
-- all
-
-- version
-
-- -.*			**(word begin with "-")**
-
+I planned to maintain profile file ('~/.quickopen') in User path,but an absolutely different idea catch me now.Placing all quickopens in work directory(usr/local/bin) and prefixing each with "-" to distinguish.Then quickopen list is easy to get and I don't need to design a complex sync system to get list updated when user delete quickopen system via other ways.
