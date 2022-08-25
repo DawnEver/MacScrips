@@ -2,36 +2,122 @@
 #functions
 function help(){
     if [ $# == 0 ];then
-    echo "help"
+        echo "====help===="
+        echo "..."
     elif [ $# == 1 ];then
-    echo '$1'
+        # echo 'wait for seconds'
+        if [[ $1 =~ .*/.* ]];then
+            echo "searching quickopen for targetPath #"$1"#"
+            find /usr/local/bin -name  o-*  | xargs grep -H -l "targetPath=\'"$1"\'"
+            if [ $? == 1 ];then
+                echo "Error:targetPath #"$1"# not found"
+                return
+            fi
+        else
+            echo "searching help for quickopen #"$1"#"
+            find /usr/local/bin -name $1 | xargs grep  "targetPath="
+            e=$?
+            find /usr/local/bin -name o-$1 | xargs grep  "targetPath="
+            e+=$? 
+            if [ $e == 0 ];then
+                echo "Error:quickopen #"$1"# not found"
+            fi
+        fi
     fi
 }
 
 function list(){
-
+    echo '====quickopenList===='
+    echo $quickopenList
+    echo "input 'quickopen help o-[quickopen]' or 'quickopen help o-[quickopen]' for targetPath."
 }
 
 function new(){
+    echo 'create new quickopen '$1
+    if [[ $1 == 'new' || $1 == 'del' || $1 == 'delete' || $1 == 'list' || $1 == 'help' || $1 == 'version' || $1 == 'all' ]];then
+       echo "Error:quickopen name conflict"
+        echo "=====reserved words====="
+        echo "help
+        new
+        all
+        version
+        del
+        delete
+        .o-*   (word prefixed with 'o-')"
+    else
+        echo "this is my test" > a.txt
+        echo 'new'
+    fi
 }
 
 function delete(){
-listLenth=${#quickopenList}+1
-quickopenList[$listLenth]='all'
-# 循环遍历
-fi
+    target=$1
+    all=0
 
+    # traversal to delete
+    for quickopen in $quickopenList
+    do
+        if [ $all == 1 ];then
+            rm '/usr/local/bin/'$quickopen
+        else
+            if [ $quickopen == $target ];then
+                hit=1
+                rm '/usr/local/bin/'$target
+            elif [ $quickopen == o-$target ];then
+                hit=1
+                rm '/usr/local/bin/o-'$target
+            fi
+        fi
+    done
+
+    # output
+    if [ $hit == 0 ];then
+        echo 'Error:quickopen #'$target'# not found'
+    else
+        echo 'Suceed:delete quickopen #'$target'#'
+    fi
 }
 
+function open(){
+    target=$1
+    # traversal to open
+    for quickopen in $quickopenList
+    do
+        if [ $quickopen == $target ];then
+            hit=1
+            echo 'Suceed:open quickopen #'$target'#'
+            chmod 755 '/usr/local/bin/'$target
+            sh '/usr/local/bin/'$target
+        elif [ $quickopen == o-$target ];then
+            hit=1
+            echo 'Suceed:open quickopen #'$target'#'
+            chmod 755 '/usr/local/bin/o-'$target
+            sh '/usr/local/bin/o-'$target
+        fi
+    done
+
+    # output
+    if [ $hit == 0 ];then
+        echo 'Error:quickopen #'$target'# not found'
+    fi
+}
 function version(){
-    echo 'version: 1.0.0'
+    version='1.0.0'
+    echo 'version: $version'
 }
-#variables
+
+
+#init variables
 quickopenList=()
 listLenth=0
-
+hit=0
 
 # get quickopen list
+find /usr/local/bin -name o-* -exec basename {} \; -print0 >tmpfile
+while IFS=  read -r -d $'\0'; do
+    quickopenList+=($REPLY)
+done <tmpfile
+rm -f tmpfile
 
 listLenth=${#quickopenList}
 
@@ -46,20 +132,22 @@ elif [ $# == 1 ];then
     elif [ $1 == 'list' ];then
         list
     else
-        echo 'no quickopen named $1'
+       open $1
     fi
 elif [ $# == 2 ];then
-    if [ $1 == 'del' ];then
+    if [[ $1 == 'del' || $1 == 'delete' ]];then
         delete $2
     elif [ $1 == 'help' ];then
         help $2
-    elif [ $1 == 'new' ];then
-        new $2
     else
-
+        echo "Error:command not found"
+    fi
+elif [ $# == 3 ];then
+    if [ $1 == 'new' ];then
+        new $2 $3
     fi
 else
-    echo "error command"
+    echo "Error:command not found"
+    echo "input 'quickopen help' for help"
 fi
-
 exit

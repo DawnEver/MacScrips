@@ -1,7 +1,7 @@
 #!/bin/sh
 work_path=$(dirname $0)
 file='/usr/local/bin/quickopen'
-profile='~/.quickopen'
+# profile='~/.quickopen'
 if [ -f "$file" ]; then
     rm /usr/local/bin/quickopen
     echo "delete quickopen script"

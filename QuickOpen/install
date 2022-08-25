@@ -1,11 +1,11 @@
 #!/bin/sh
 work_path=$(dirname $0)
 file='/usr/local/bin/quickopen'
-profile='~/.quickopen'
+# profile='~/.quickopen'
 if [ ! -f "$file" ]; then
     ln -s $work_path/quickopen /usr/local/bin/quickopen
     echo "add quickopen script to environment path"
 else
-    echo "quickopen doesn'texist in /usr/local/bin"
+    echo "quickopen doesn't exist in /usr/local/bin"
 fi
 exit

@@ -1,0 +1,5 @@
+#!/bin/sh
+targetPath='/usr/local/bin'
+cd $targetPath
+echo $targetPath
+open $targetPath
