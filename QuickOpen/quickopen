@@ -30,7 +30,8 @@ function help(){
 
 function list(){ # quickopen list
     echo '====quickopenList===='
-    echo $quickopenList
+    # echo $quickopenList
+    find /usr/local/bin -name 'o-*' -exec basename {} \;
 
     echo '====tips===='
     echo "input 'quickopen help o-[quickopen]' or 'quickopen help o-[quickopen]' for targetPath."
