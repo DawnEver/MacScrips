@@ -1,20 +1,22 @@
 #!/bin/sh
 #functions
 function help(){
-    if [ $# == 0 ];then
+    if [ $# == 0 ];then # quickopen help
         echo "====help===="
-        echo "..."
+        echo $help
     elif [ $# == 1 ];then
         # echo 'wait for seconds'
-        if [[ $1 =~ .*/.* ]];then
+        if [[ $1 =~ .*/.* ]];then # quickopen help [targetPath]
             echo "searching quickopen for targetPath #"$1"#"
-            find /usr/local/bin -name  o-*  | xargs grep -H -l "targetPath=\'"$1"\'"
+            echo '====result===='
+            find /usr/local/bin -name 'o-*'  | xargs grep -H -l "targetPath='"$1"'"
             if [ $? == 1 ];then
-                echo "Error:targetPath #"$1"# not found"
+                echo "Error:quickopen to targetPath #"$1"# not found"
                 return
             fi
-        else
+        else # quickopen help o-[shotcut]
             echo "searching help for quickopen #"$1"#"
+            echo '====result===='
             find /usr/local/bin -name $1 | xargs grep  "targetPath="
             e=$?
             find /usr/local/bin -name o-$1 | xargs grep  "targetPath="
@@ -26,14 +28,15 @@ function help(){
     fi
 }
 
-function list(){
+function list(){ # quickopen list
     echo '====quickopenList===='
     echo $quickopenList
+
+    echo '====tips===='
     echo "input 'quickopen help o-[quickopen]' or 'quickopen help o-[quickopen]' for targetPath."
 }
 
-function new(){
-    echo 'create new quickopen '$1
+function new(){ # quickopen new [shotcut] [targetPath]
     if [[ $1 == 'new' || $1 == 'del' || $1 == 'delete' || $1 == 'list' || $1 == 'help' || $1 == 'version' || $1 == 'all' ]];then
        echo "Error:quickopen name conflict"
         echo "=====reserved words====="
@@ -43,29 +46,67 @@ function new(){
         version
         del
         delete
-        .o-*   (word prefixed with 'o-')"
+        o-*   (wor d prefixed with 'o-')"
     else
-        echo "this is my test" > a.txt
-        echo 'new'
+        if [ -e '/usr/local/bin/o'-$1 ]; then
+            echo 'Warning : quickopen #'$1'# has existed,do you want to replace it?(Y/N)'
+            read e
+            if [[ $e != Y && $e != y ]];then
+                echo 'Warning:command cancelled'
+                return
+            fi
+        fi
+
+        find /usr/local/bin -name  'o-*' | xargs grep -H -l "targetPath='"$2"'"
+        e=$?
+        if [[ $e == 0 && $listLenth > 0 ]];then
+            echo 'Warning : targetPath #'$2'# has been included in quikopen above,do you want to repeat?(Y/N)'
+            read e
+            if [[ $e != Y && $e != y ]];then
+                echo 'Warning:command cancelled'
+                return
+            fi
+        fi
+
+        echo '#!/bin/sh' > '/usr/local/bin/o-'$1
+        echo "targetPath='"$2"'" >> "/usr/local/bin/o-"$1
+        # echo 'open ~/.quickopen/alias/o-'$1 >> '/usr/local/bin/o-'$1
+        echo 'open $targetPath' >> '/usr/local/bin/o-'$1
+        # ln -s $2 ~/.quickopen/alias/o-$1
+        # mv ~/.quickopen/o-$1 ~/.quickopen/alias/o-$1
+        # osascript -e 'tell application "Finder" to make alias file to POSIX file "/Users/dawnever/MyFile/Develop/Shell/MacScripts/readme.md" at POSIX file "~/.quickopen/alias/o-$shell"'
+
+
+        chmod 755 '/usr/local/bin/o-'$1
+        echo 'Suceed:create new quickopen #'$1'#'
     fi
 }
 
-function delete(){
+function delete(){ 
     target=$1
     all=0
+
+    if [ $target == 'all' ];then
+        all=1
+        hit=1
+        # rm -f -r ~/.quickopen/alias
+        # mkdir ~/.quickopen/alias
+    fi
 
     # traversal to delete
     for quickopen in $quickopenList
     do
-        if [ $all == 1 ];then
+        if [ $all == 1 ];then # quickopen del all
             rm '/usr/local/bin/'$quickopen
         else
-            if [ $quickopen == $target ];then
+            if [ $quickopen == $target ];then # quickopen del o-[shotcut]
                 hit=1
                 rm '/usr/local/bin/'$target
-            elif [ $quickopen == o-$target ];then
+                # rm -f '~/.quickopen/alias/'$target
+            elif [ $quickopen == o-$target ];then # quickopen del [shotcut]
                 hit=1
                 rm '/usr/local/bin/o-'$target
+                # rm -f '~/.quickopen/alias/o-'$target
             fi
         fi
     done
@@ -78,17 +119,17 @@ function delete(){
     fi
 }
 
-function open(){
+function open(){ 
     target=$1
     # traversal to open
     for quickopen in $quickopenList
     do
-        if [ $quickopen == $target ];then
+        if [ $quickopen == $target ];then # quickopen o-[shotcut]
             hit=1
             echo 'Suceed:open quickopen #'$target'#'
             chmod 755 '/usr/local/bin/'$target
             sh '/usr/local/bin/'$target
-        elif [ $quickopen == o-$target ];then
+        elif [ $quickopen == o-$target ];then # quickopen [shotcut]
             hit=1
             echo 'Suceed:open quickopen #'$target'#'
             chmod 755 '/usr/local/bin/o-'$target
@@ -101,27 +142,32 @@ function open(){
         echo 'Error:quickopen #'$target'# not found'
     fi
 }
-function version(){
-    version='1.0.0'
-    echo 'version: $version'
+
+function version(){ # 'quickopen version'
+    echo '====version===='
+    echo $version
 }
 
-
+# ===main===
 #init variables
 quickopenList=()
 listLenth=0
 hit=0
+version='1.0.0'
+help='...'
 
 # get quickopen list
-find /usr/local/bin -name o-* -exec basename {} \; -print0 >tmpfile
+find /usr/local/bin -name 'o-*' -exec basename {} \; -print0 >tmpfile
 while IFS=  read -r -d $'\0'; do
     quickopenList+=($REPLY)
 done <tmpfile
 rm -f tmpfile
 
+
 listLenth=${#quickopenList}
 
 # execute commands according to input
+echo "======="
 if [ $# == 0 ];then
     help
 elif [ $# == 1 ];then
@@ -150,4 +196,5 @@ else
     echo "Error:command not found"
     echo "input 'quickopen help' for help"
 fi
+echo "======="
 exit

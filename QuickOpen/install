@@ -5,7 +5,10 @@ file='/usr/local/bin/quickopen'
 if [ ! -f "$file" ]; then
     ln -s $work_path/quickopen /usr/local/bin/quickopen
     echo "add quickopen script to environment path"
+    # mkdir ~/.quickopen
+    # mkdir ~/.quickopen/alias
+    echo "create .quickopen file in User directoey"
 else
-    echo "quickopen doesn't exist in /usr/local/bin"
+    echo "quickopen exists in /usr/local/bin"
 fi
 exit

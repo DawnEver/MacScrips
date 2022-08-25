@@ -4,7 +4,8 @@ file='/usr/local/bin/quickopen'
 # profile='~/.quickopen'
 if [ -f "$file" ]; then
     rm /usr/local/bin/quickopen
-    echo "delete quickopen script"
+    # rm ~/.quickopen
+    echo "delete quickopen script and its profile"
 else
     echo "quickopen doesn't exist in /usr/local/bin"
 fi
