@@ -10,7 +10,8 @@ helps you open folder quickly and manage your quickopens(shell scripts to open f
 3. click *uninstall* to delete quickopen absolutely
   > the repo and your quickopens will not be delete.Please run `quickopen del all` before
 
-4. profile files in ~/.quickopen
+~~4. profile files in ~/.quickopen~~
+5. you can run `zsh ./test.sh` to test
 
 ### Use QuickOpen
 
@@ -98,4 +99,6 @@ Hating files prefixed with "." accumulating in User path,I decided take a differ
 I planned to maintain profile file ('~/.quickopen') in User path,but an absolutely different idea catch me now.Placing all quickopens in work directory(usr/local/bin) and prefixing each with "o-" to distinguish.Then quickopen list is easy to get and I don't need to design a complex sync system to get list updated when user delete quickopen system via other ways.
 
 By coincidence, I find script 'open [alias]'in terminal will create a new terminal window and cd to its source directory.So I don't need to battle with subshell and tupe in shell.So I create a collection of targetPath alias named *alias*. in '~/.quickopen/alias'
-However.I found the difference between aliases created by `ln -s` and finder,and my flame estinguished in face of the gap between Aliases and Symbolic links
+However.I found the difference between aliases created by `ln -s` and finder,and my flame estinguished in face of the gap between Aliases and Symbolic links.
+
+I get different results when I run script `quickopenList=($(find /usr/local/bin -name "o-*" -exec basename {} \;)); echo $quickopenList`in bash and zsh.

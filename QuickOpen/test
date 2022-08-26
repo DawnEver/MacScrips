@@ -1,0 +1,142 @@
+#!usr/bin/zsh
+# test file
+# zsh ./test.sh
+
+echo '====BeginTest===='
+
+quickopen version
+
+quickopen del all
+quickopen delete o-bin
+
+quickopen new bin /usr/local/bin
+echo y |quickopen new a /usr/local/bin
+echo Y |quickopen new a /usr/local
+echo N |quickopen new b /usr/local
+echo s |quickopen new c /usr/local
+
+quickopen list
+
+quickopen help
+quickopen help a
+quickopen help o-a
+quickopen help /usr/local/bin
+
+quickopen o-bin
+quickopen bin
+o-a
+
+quickopen del a
+quickopen del o-bin
+quickopen list
+echo '====EndTest===='
+
+# ====Standard Output====
+# ====BeginTest====
+# =======
+# ====version====
+# 1.0.0
+# ======
+# =======
+# Suceed:delete quickopen #all#
+# ======
+# =======
+# Error:quickopen #o-bin# not found
+# ======
+# =======
+# Suceed:create new quickopen #bin#
+# ======
+# =======
+# /usr/local/bin/o-bin
+# Warning : targetPath #/usr/local/bin# has been included in quikopen above,do you want to repeat?(Y/N)
+# Suceed:create new quickopen #a#
+# ======
+# =======
+# Warning : quickopen #a# has existed,do you want to replace it?(Y/N)
+# Suceed:create new quickopen #a#
+# ======
+# =======
+# /usr/local/bin/o-a
+# Warning : targetPath #/usr/local# has been included in quikopen above,do you want to repeat?(Y/N)
+# Warning:command cancelled
+# ======
+# =======
+# /usr/local/bin/o-a
+# Warning : targetPath #/usr/local# has been included in quikopen above,do you want to repeat?(Y/N)
+# Warning:command cancelled
+# ======
+# =======
+# ====quickopenList====
+# o-a
+# o-bin
+# ====tips====
+# input 'quickopen help o-[quickopen]' or 'quickopen help o-[quickopen]' for targetPath.
+# ======
+# =======
+# ====help====
+# **create a new quickopen**
+# quickopen new [shotcut] [targetPath] (targetPath should be absolute path)
+
+# **quickopen**
+# quickopen [shotcut]
+# quickopen o-[shotcut]
+# o-[shotcut]
+# > o-[shotcut] : quickcut with a prefex "o-" 
+
+# **delete**
+# *delete a quickopen
+# quickopen del o-[shotcut]
+# quickopen delete o-[shotcut]
+# quickopen del [shotcut]
+# quickopen delete [shotcut]
+# *delete all quickopens
+# quickopen del all
+
+# **help**
+# *show a quickopen absolute path 
+# quickopen help o-[shotcut]
+# quickopen help [shotcut]
+# *search quickopen according to absolute path 
+# quickopen help [targetPath]
+# *show help
+# quickopen help
+
+# **list**
+# quickopen list
+
+# **version**
+# quickopen version
+# ======
+# =======
+# searching help for quickopen #a#
+# ====result====
+# targetPath='/usr/local'
+# help:21: = not found
+# =======
+# searching help for quickopen #o-a#
+# ====result====
+# targetPath='/usr/local'
+# help:21: = not found
+# =======
+# searching quickopen for targetPath #/usr/local/bin#
+# ====result====
+# /usr/local/bin/o-bin
+# ======
+# =======
+# Suceed:open quickopen #o-bin#
+# ======
+# =======
+# Suceed:open quickopen #bin#
+# ======
+# =======
+# Suceed:delete quickopen #a#
+# ======
+# =======
+# Suceed:delete quickopen #o-bin#
+# ======
+# =======
+# ====quickopenList====
+# ====tips====
+# input 'quickopen help o-[quickopen]' or 'quickopen help o-[quickopen]' for targetPath.
+# ======
+# ====EndTest====
