@@ -71,6 +71,7 @@ function new(){ # quickopen new [shotcut] [targetPath]
 
         echo '#!/bin/sh' > '/usr/local/bin/o-'$1
         echo "targetPath='"$2"'" >> "/usr/local/bin/o-"$1
+        echo "echo targetPath = "$2 >> "/usr/local/bin/o-"$1
         # echo 'open ~/.quickopen/alias/o-'$1 >> '/usr/local/bin/o-'$1
         echo 'open $targetPath' >> '/usr/local/bin/o-'$1
         # ln -s $2 ~/.quickopen/alias/o-$1
