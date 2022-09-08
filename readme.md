@@ -1,4 +1,4 @@
-# My start with Mac scripts
+# Mac scripts
 
 I have been tired with repeated clicking on mac for long.As a geek,it's time to do something.
 
@@ -6,33 +6,39 @@ I walked to shell first,and have many problems solved and many unsolved.Then I e
 
 As a collection of automatic scripts,many problems in this repo may have a similar solution on the Internet  and in fact I search the Internet  too
 
-### Attention 
+## Attention 
 
 scripts only tested on MacOS Big Sur(11.6.7 )
 
-### steps to start
-**shell**
-1. clone the repo 
-2. cd to script folder
-3. create password.txt and fillin your password 
-4. click *editEnv* to add script to environment path,and then you can execute it anywhere
+## Usage
+Follow README.md in each folder
 
-**mac script**
-[to be continued]
-
-### script list
-
+## List
 **shell**
 - MacState
 - MuteQQ
 - MacRar
 - MacIP
-- [developing]QuickOpen
+- QuickOpen
 **mac scripts**
 - [to be continued]
 
-### to-do list
 
-- [**Fin**]add root password profile file.
-- [**Fin**]add executive file to environment path
+## Maintainers
 
+[@LinXu](https://github.com/DawnEver)
+
+## Contributing
+
+Feel free to dive in! [Open an issue](https://github.com/RichardLitt/standard-readme/issues/new) or submit PRs.
+
+Standard Readme follows the [Contributor Covenant](http://contributor-covenant.org/version/1/
+
+### Contributors
+
+This project exists thanks to all the people who contribute. 
+
+
+## License
+
+[MIT](LICENSE) © Richard Littauer

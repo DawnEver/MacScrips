@@ -3,8 +3,19 @@
 **A quick-open script manager**
 helps you open folder quickly and manage your quickopens(shell scripts to open folder in terminal).
 
+## Table of Contents
+- [Install](#install)
+- [Usage](#usage)
+	- [Use](#Use)
+  - [Attention](#Attention)
+- [Log](#Log)
+- [Related Efforts](#related-efforts)
+- [Maintainers](#maintainers)
+- [Contributing](#contributing)
+- [License](#license)
 
-### Start
+
+## Install
 1. clone from github
 2. click *install* and follow **Use QuickOpen**
 3. click *uninstall* to delete quickopen absolutely
@@ -13,7 +24,8 @@ helps you open folder quickly and manage your quickopens(shell scripts to open f
 ~~4. profile files in ~/.quickopen~~
 5. you can run `zsh ./test.sh` to test
 
-### Use QuickOpen
+## Usage
+### Use
 you can use **qo** as alias of **quickopen**
 
 - **create a new quickopen**
@@ -62,7 +74,7 @@ you can use **qo** as alias of **quickopen**
   ~~'quickopen -v'~~
   'quickopen version'
 
-### attentiton
+### Attentiton
 ~~Please give the quickopen name a shot before you name it to avoid unexcepted results.~~
 
 **Reserved Word**
@@ -81,8 +93,9 @@ don't name a quickopen like these to avoid unexcepted results.
 - o-*
 	
 	> o-* : word prefixed with 'o-'
-### Developing Log
 
+## Log
+20220826
 When I want to open a folder in the terminal deep in my Mac,I need to open its parent folders generation by generation.I believe my system is well-organized but maybe I need to open the project folder hundreds times in a developing cycle.
 
 What makes it worse is that I need reveal it in finder at the same time(In any case,macos is not all based on file system like linux).
@@ -103,3 +116,19 @@ By coincidence, I find script 'open [alias]'in terminal will create a new termin
 However.I found the difference between aliases created by `ln -s` and finder,and my flame estinguished in face of the gap between Aliases and Symbolic links.
 
 I get different results when I run script `quickopenList=($(find /usr/local/bin -name "o-*" -exec basename {} \;)); echo $quickopenList`in bash and zsh.
+
+20220909
+It's **quickopen** too long to type that I decide make an alias **qo**
+
+## Related Efforts
+None
+
+## Maintainers
+[@LinXu](https://github.com/DawnEver)
+
+## Contributors
+This project exists thanks to all the people who contribute.
+
+## License
+
+[MIT](LICENSE) © Richard Littauer
