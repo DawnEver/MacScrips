@@ -14,6 +14,7 @@ helps you open folder quickly and manage your quickopens(shell scripts to open f
 5. you can run `zsh ./test.sh` to test
 
 ### Use QuickOpen
+you can use **qo** as alias of **quickopen**
 
 - **create a new quickopen**
   ~~`quickopen -n [shotcut] [targetPath]`~~
