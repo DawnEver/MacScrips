@@ -1,40 +1,8 @@
 #!/bin/zsh
 #functions
 function help(){
-    if [ $# = 0 ];then # quickopen help
         echo "====help===="
         echo $help
-    elif [ $# = 1 ];then
-        # echo 'wait for seconds'
-        if [[ $1 =~ .*/.* ]];then # quickopen help [targetPath]
-            echo "searching quickopen for targetPath #"$1"#"
-            echo '====result===='
-            find /usr/local/bin -name 'o-*'  | xargs grep -H -l "targetPath='"$1"'"
-            if [ $? = 1 ];then
-                echo "Error:quickopen to targetPath #"$1"# not found"
-                return
-            fi
-        else # quickopen help o-[shotcut]
-            echo "searching help for quickopen #"$1"#"
-            echo '====result===='
-            find /usr/local/bin -name $1 | xargs grep  "targetPath="
-            e=$?
-            find /usr/local/bin -name o-$1 | xargs grep  "targetPath="
-            e+=$? 
-            if [ $e == 0 ];then
-                echo "Error:quickopen #"$1"# not found"
-            fi
-        fi
-    fi
-}
-
-function list(){ # quickopen list
-    echo '====quickopenList===='
-    # echo $quickopenList
-    find /usr/local/bin -name 'o-*' -exec basename {} \;
-
-    echo '====tips===='
-    echo "input 'quickopen help o-[quickopen]' or 'quickopen help o-[quickopen]' for targetPath."
 }
 
 function new(){ # quickopen new [shotcut] [targetPath]
@@ -156,54 +124,39 @@ quickopenList=()
 listLenth=0
 hit=0
 version='1.0.0'
-help='**create a new quickopen**
-quickopen new [shotcut] [targetPath] (targetPath should be absolute path)
-
-**quickopen**
-quickopen [shotcut]
-quickopen o-[shotcut]
-o-[shotcut]
-> o-[shotcut] : quickcut with a prefex "o-" 
-
-**delete**
-*delete a quickopen
-quickopen del o-[shotcut]
-quickopen delete o-[shotcut]
-quickopen del [shotcut]
-quickopen delete [shotcut]
-*delete all quickopens
-quickopen del all
-
-**help**
-*show a quickopen absolute path 
-quickopen help o-[shotcut]
-quickopen help [shotcut]
-*search quickopen according to absolute path 
-quickopen help [targetPath]
-*show help
-quickopen help
-
-**list**
-quickopen list
-
-**version**
-quickopen version'
-
-# get quickopen list
-quickopenList=($(find /usr/local/bin -name "o-*" -exec basename {} \;))
-listLenth=${#quickopenList}
+help='- initialize the folder with ilock
+  `ilock init`
+  > create profile folder ./.ilock/
+- delete ilock and profile file
+  `ilock delete`
+- lock and unlock target files
+  `ilock lock [target filepath]`#(relative path are recommanded for target filepath)
+  `ilock unlock [target filepath]`
+  `ilock lock .`# lock all files in the folder
+  `ilock unlock .`# unlock all files in the folder
+  `ilock .`#lock/unlock all files acccording to its state automaticlally
+- show lock/unlock log
+  `ilock log`
+  >log records each change in lock status and its user("$USER")
+- show lock status at present
+  `ilock status`
+- show help
+  `ilock help`
+  `ilock version`'
 
 # execute commands according to input
 echo "======="
 if [ $# = 0 ];then
     help
 elif [ $# = 1 ];then
-    if [ $1 = 'help' ];then
-        help
-    elif [ $1 = 'version' ];then
-        version
-    elif [ $1 = 'list' ];then
-        list
+    if [ $1 = 'lock' ];then
+        lock
+    elif [ $1 = 'unlock' ];then
+        unlock
+    elif [ $1 = '.' ];then
+        lock .
+    elif [ $1 = 'log' ];then
+        lock .
     else
        open $1
     fi

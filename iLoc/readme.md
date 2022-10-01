@@ -1,4 +1,4 @@
-# iLock
+# iLock[Postponed]
 
 **A quick-open script manager**
 helps you lock/unlock folders quickly 
@@ -27,8 +27,9 @@ lock files to make it only readable
 ### Use
 - initialize the folder with ilock
   `ilock init`
+  
   > create profile folder ./.ilock/
-
+  
 - delete ilock and profile file
   `ilock delete`
 
@@ -43,8 +44,9 @@ lock files to make it only readable
 
 - show lock/unlock log
   `ilock log`
+  
   >log records each change in lock status and its user("$USER")
-
+  
 - show lock status at present
   `ilock status`
 
@@ -61,10 +63,11 @@ pass
 Its normal and efficient to control versions with *git* or *svn* when developing in team.But it may be your wishful thinking to work with teammates not good at these useful tools(even not good at computer).
 It's merciful to see all progress come down to zero after a version sync.In this team,using git would be a disaster.
 
-In a project,my failure in git server (problems like server version delay and uncomplete version sync annoy me a lot)pushes me to develop my own tool.Git was developed by linus himself,so why couldn't me?
+In a project,my failure in git server (problems like server version delay and uncomplete version sync annoy me a lot)pushes me to develop my own tool.Git was developed by linus himself,so why couldn't me?Git is so heavy and we need a VCS for smaller teams and projects with indecomposible sections.
 
 When I reading about multi-threads,it hit me that 'lock' can help me.Efficency vs safety,I choose the latter.
 
+Then I learn about `stat` command,I suddenly find it's of no need to develop iLoc.My pasaion extinguished.
 [to-do] check files each time to avoid unexcepted changes(make shotcuts like git)
 
 ## Related Efforts
