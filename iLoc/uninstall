@@ -1,0 +1,13 @@
+#!/bin/sh
+work_path=$(dirname $0)
+file='/usr/local/bin/ilock'
+# profile='~/.quickopen'
+if [ -f "$file" ]; then
+    rm /usr/local/bin/quickopen
+    rm /usr/local/bin/qo
+    # rm ~/.quickopen
+    echo "delete quickopen script and its profile"
+else
+    echo "quickopen doesn't exist in /usr/local/bin"
+fi
+exit

@@ -1,0 +1,7 @@
+#!usr/bin/zsh
+# test file
+# zsh ./test.sh
+
+echo '====BeginTest===='
+
+echo '====EndTest===='

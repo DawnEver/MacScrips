@@ -12,6 +12,8 @@ scripts only tested on MacOS Big Sur(11.6.7 )
 
 ## Usage
 Follow README.md in each folder
+**attention**
+*install* and *uninstall* scripts are only availible for MacOS
 
 ## List
 **shell**
@@ -20,6 +22,7 @@ Follow README.md in each folder
 - MacRar
 - MacIP
 - QuickOpen
+- iLock
 **mac scripts**
 - [to be continued]
 
