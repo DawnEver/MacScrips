@@ -1,20 +1,15 @@
 # UncompilePy
-
-
-
+Uncompile .exe application to .py files
 ## requirements
-uncompyle
-
-
+uncompyle ==3.8.0
 
 ### Usage
-1. ove to folder *UncompilePy*
+1. move to folder *UncompilePy*
 2. Run `sh main [exe filePath]`
 
-
-- [to-do] replace ‘.’ with ‘/’ 
+- [to-do] replace ‘.’ with ‘/’ and recover its file-tree struct.
 - [to-do] test the app after uncompilation
-
+- [to-do] accelerate uncompile 
 
 
 ### Referrence
