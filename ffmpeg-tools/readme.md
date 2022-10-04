@@ -7,6 +7,6 @@ ffmpeg == 5.1
 # List
 ## video2gif
 1. move to *./video2gif*
-1. edit *./video2gif/timetable.txt* ,each .gif piece with `[begin time],[last time]` in a line.
+1. edit *./video2gif/timetable.txt* ,each video clip with a line `[begin time],[last time]`.
 2. run `video2gif [videoPath]` and wait,open folder *./output* for results.
 
