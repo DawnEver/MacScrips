@@ -133,5 +133,12 @@ dmypy.json
 .DS_Store
 *.code-workspace
 password.txt
+
+# quickopen
 .quickopen
+
+# UncompilePy
 *_extracted/
+
+# ffmpeg-tools
+output/

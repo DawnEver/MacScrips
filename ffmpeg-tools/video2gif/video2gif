@@ -7,8 +7,13 @@ do
     last_time=${line%,*}
     start_times[$len]=$start_time
     last_times[$len]=$last_time
-len+=1
+    ((len+=1))
 done
 
-for 
-# ffmpeg -t 3 -ss 00:00:02 -i $video_path ./output/small-clip.gif
+mkdir ./output
+for ((i=0;i<$len;i++));
+do
+ffmpeg -t ${start_times[i]} -ss ${last_times[i]} -i $video_path -f gif -s 320x240 -r 5 ./output/$i.gif
+done 
+# -s 320x240 画幅 320x240 
+# -r 5 一秒帧数 5
