@@ -1,0 +1,14 @@
+#!/bin/sh
+video_path=$1
+len=0
+for line in `cat timetable.txt`
+do
+    start_time=${line##*,}
+    last_time=${line%,*}
+    start_times[$len]=$start_time
+    last_times[$len]=$last_time
+len+=1
+done
+
+for 
+# ffmpeg -t 3 -ss 00:00:02 -i $video_path ./output/small-clip.gif

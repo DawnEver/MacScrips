@@ -134,3 +134,4 @@ dmypy.json
 *.code-workspace
 password.txt
 .quickopen
+*_extracted/
