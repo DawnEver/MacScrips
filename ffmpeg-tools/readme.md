@@ -21,5 +21,5 @@ ffmpeg == 5.1
     **e.g.**
     `sh video2gif test.mp4` # using default params
     
-    `sh video2gif test.mp4  ”-f gif -s 640x480 -r 5“`
+    `sh video2gif test.mp4  "-f gif -s 640x480 -r 5"`
 
