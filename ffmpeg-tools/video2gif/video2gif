@@ -13,13 +13,17 @@ done
 mkdir ./output
 for ((i=0;i<$len;i++));
 do
-if [ $# -eq 1 ];then
-    ffmpeg -t ${start_times[i]} -ss ${last_times[i]} -i $video_path -f gif -s 640x480 -r 10 ./output/$i.gif
-    # -s 320x240 画幅 320x240 
-    # -r 5 一秒帧数 5
-elif [ $# -eq 2 ];then
-    ffmpeg -t ${start_times[i]} -ss ${last_times[i]} -i $video_path $2 ./output/$i.gif
-else
-    echo error:too many paramas 
-fi
+    if [[ $start_times =~ '#' ]];then
+        continue
+    fi
+
+    if [ $# -eq 1 ];then
+        ffmpeg -t ${start_times[i]} -ss ${last_times[i]} -i $video_path -f gif -s 640x480 -r 10 ./output/$i.gif
+        # -s 320x240 画幅 320x240 
+        # -r 5 一秒帧数 5
+    elif [ $# -eq 2 ];then
+        ffmpeg -t ${start_times[i]} -ss ${last_times[i]} -i $video_path $2 ./output/$i.gif
+    else
+        echo error:too many paramas 
+    fi
 done 
