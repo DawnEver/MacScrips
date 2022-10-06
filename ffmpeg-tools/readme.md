@@ -13,6 +13,7 @@ ffmpeg == 5.1
 1. open Terminal and change work directory to *./video2gif*
 
 2. edit *./video2gif/timetable.txt* ,each video clip with a line `[begin time],[last time]`.
+    you can add '#' ahead to skip a line
 
 3. run `video2gif [videoPath] ("[ffmpeg params]")` and wait,open folder *./output* for results.
 
@@ -22,4 +23,6 @@ ffmpeg == 5.1
     `sh video2gif test.mp4` # using default params
     
     `sh video2gif test.mp4  "-f gif -s 640x480 -r 5"`
+
+
 
