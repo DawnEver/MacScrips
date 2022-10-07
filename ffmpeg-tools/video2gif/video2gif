@@ -9,11 +9,13 @@ do
     last_times[$len]=$last_time
     ((len+=1))
 done
+if [[ ! -d ./output ]];then
+    mkdir ./output
+fi
 
-mkdir ./output
 for ((i=0;i<$len;i++));
 do
-    if [[ $start_times =~ '#' ]];then
+    if [[ $start_times[$i] =~ '#' ]];then
         continue
     fi
 
