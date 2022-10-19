@@ -1,3 +1,7 @@
-00:03:22,6
-00:05:48,11
-# [hours：minutes：seconds],[last time]
+#00:00:21,21
+#00:00:43,19
+00:01:02,18
+#00:01:40,21
+#00:02:03,18
+#00:02:22,20
+#[hours:minutes:seconds],[lastingTime]

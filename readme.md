@@ -23,6 +23,7 @@ Follow README.md in each folder
 - MacIP
 - QuickOpen
 - iLock
+- [postponed]word-tools
 
 **mac scripts**
 - [to be continued]
