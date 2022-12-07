@@ -142,3 +142,5 @@ password.txt
 
 # ffmpeg-tools
 output/
+ffmpeg-tools/source
+fonts/
