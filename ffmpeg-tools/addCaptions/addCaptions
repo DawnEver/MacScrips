@@ -6,7 +6,7 @@ if [[ ! -d ./output ]];then
     mkdir ./output
 fi   
 
-ffmpeg -i $video_path -lavfi "subtitles="$caption_path":force_style='Alignment=31,MarginV=260'" -y output/out.mp4
+ffmpeg -i $video_path -lavfi "subtitles="$caption_path":force_style='Alignment=11,MarginV=10'" -y output/out.mp4
 
 # 01.Name 风格(Style)的名称. 区分大小写. 不能包含逗号.
 # 02.Fontname        使用的字体名称, 区分大小写.
