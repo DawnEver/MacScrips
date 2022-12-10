@@ -1,22 +1,23 @@
 #!/bin/sh
 path=$1
 index=1
+null='\n'
 cat $path | while read line
 do
-    echo "file:{$path}"
-done
-
-while read line
-do
+if [ "$line" = "$null" ]
+then
 echo $index
-index+=1
-echo $line
-echo '\n'
+index += 1
+fi
+
 done < $path
+
 
 # 输入示例
 # 00:00:01，00:00:10
 # xxxxxxx
 # xxxxxxxxxx
+#
 # 00:00:13，00:00:20
 # xxxxxxx
+

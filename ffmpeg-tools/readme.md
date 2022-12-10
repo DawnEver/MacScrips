@@ -29,3 +29,4 @@ as title.
 ## addCaptions
 - *addCaptions* to add captions
 - *easysrt* tool to format srt file
+[todo]auto add breakpoint even captions
