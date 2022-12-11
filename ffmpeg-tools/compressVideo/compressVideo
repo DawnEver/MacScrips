@@ -6,7 +6,7 @@ if [[ ! -d ./output ]];then
     mkdir ./output
 fi   
 
-ffmpeg -i $video_path -r 25 -s 3840x2160 -b 600k output/output.mp4
+ffmpeg -i $video_path -r 28 -s 3840x2160 -b 600k output/output.mp4
 # -b 码率bps(bit per second)
 # -r 帧率fps(frame per second)frame rate
 # -s 分辨率
