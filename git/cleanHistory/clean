@@ -1,0 +1,5 @@
+#!/bin/sh
+branch=$1
+git checkout $branch
+git branch temp
+git branch -m $branch
