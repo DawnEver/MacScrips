@@ -1,8 +1,10 @@
 #!/bin/sh
 branch=$1
+git checkout $branch
 git checkout --orphan latest_branch
 git add -A
 git commit -am "commit"
 git branch -D $branch
 git branch -m $branch
-git push -f origin $branch
+git push -f origin $branch:$branch
+git branch --set-upstream-to=origin/$branch
