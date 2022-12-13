@@ -2,4 +2,7 @@
 branch=$1
 git checkout $branch
 git branch temp
+git checkout temp
+git branch -D $branch
 git branch -m $branch
+git push --set-upstream origin $branch
