@@ -1,5 +1,0 @@
-#!/bin/sh
-work_path=$(dirname $0)
-echo "QQ is quite now!"
-echo $(cat $work_path/password.txt) |sudo -S rm /Applications/QQ.app/Contents/Resources/LoginOKSound.mp3 /Applications/QQ.app/Contents/Resources/TerminalSound.mp3
-exit
