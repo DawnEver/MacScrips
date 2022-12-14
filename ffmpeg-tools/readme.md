@@ -30,3 +30,6 @@ as title.
 - *addCaptions* to add captions
 - *easysrt* tool to format srt file
 [todo]auto add breakpoint even captions
+
+## compressVideo
+as title
