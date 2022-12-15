@@ -1,0 +1,18 @@
+#!/bin/sh
+video_path=$1
+echo $video_path
+audio_path=$2
+
+if [[ ! -d ./output ]];then
+    mkdir ./output
+fi   
+
+ffmpeg \
+-i $video_path \
+-i $audio_path \
+-c copy \
+-map 0:v:0 \
+-map 1:a:0 \
+  ./output/output.mp4
+
+#  
