@@ -5,7 +5,7 @@ audio_path=$2
 
 if [[ ! -d ./output ]];then
     mkdir ./output
-fi   
+fi
 
 ffmpeg \
 -i $video_path \
