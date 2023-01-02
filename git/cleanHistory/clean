@@ -12,7 +12,7 @@ if [ $# == 1 ];then
 elif [ $# == 0 ];then
     git rev-parse --abbrev-ref HEAD | xargs $0
 fi
-
+git gc --aggressive --prune=all
 
 
 # default_branch=`basename $(git symbolic-ref --short refs/remotes/origin/HEAD)`
