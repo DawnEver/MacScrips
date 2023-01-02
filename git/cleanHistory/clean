@@ -1,10 +1,26 @@
 #!/bin/sh
-branch=$1
-git checkout $branch
-git checkout --orphan latest_branch
-git add -A
-git commit -am "commit"
-git branch -D $branch
-git branch -m $branch
-git push -f origin $branch:$branch
-git branch --set-upstream-to=origin/$branch
+if [ $# == 1 ];then
+    branch=$1
+    git checkout $branch
+    git checkout --orphan latest_branch
+    git add -A
+    git commit -am "commit"
+    git branch -D $branch
+    git branch -m $branch
+    git push -f origin $branch:$branch
+    git branch --set-upstream-to=origin/$branch
+elif [ $# == 0 ];then
+    git rev-parse --abbrev-ref HEAD | xargs $0
+fi
+
+
+
+# default_branch=`basename $(git symbolic-ref --short refs/remotes/origin/HEAD)`
+
+# git checkout --orphan tmp
+# git add -A				# Add all files and commit them
+# git commit -m 'init'
+# git branch -D $default_branch		# Deletes the default branch
+# git branch -m $default_branch		# Rename the current branch to default
+# git push -f origin $default_branch	# Force push default branch to github
+# git gc --aggressive --prune=all		# remove the old file
