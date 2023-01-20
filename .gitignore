@@ -144,3 +144,5 @@ password.txt
 output/
 ffmpeg-tools/source
 fonts/
+
+.config

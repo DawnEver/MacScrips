@@ -1,0 +1,42 @@
+#!/bin/sh
+work_path=$(dirname $0)
+echo $work_path
+
+currentTime=$( date "+%Y-%m-%d" )
+echo $currentTime
+
+repo='DawnEver/ImageHost'
+
+
+git pull
+git add .
+git commit -m '$currentTime'
+git push
+
+
+
+echo '========================'
+echo 'url_prefix ->> Clipboard'
+url_prefix='https://cdn.jsdelivr.net/gh/'$repo'@main/'
+
+
+echo $url_prefix
+uNames=`uname -s`
+osName=${uNames: 0: 4}
+if [ "$osName" == "Darw" ] # Darwin
+then
+	echo $url_prefix | pbcopy
+elif [ "$osName" == "Linu" ] # Linux
+then
+	echo $url_prefix | xsel
+elif [ "$osName" == "MING" ] # MINGW, windows, git-bash
+then 
+    echo $url_prefix | clip
+else
+	echo "Error:Unknown OS"
+fi
+
+
+echo '========================'
+read -p 'press any key to exit' -n 1 -s
+exit
