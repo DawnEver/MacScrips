@@ -1,0 +1,5 @@
+#!/bin/sh
+work_path=$(dirname $0)
+echo $work_path
+echo $(cat $work_path/password.txt) |sudo -S ~/smcFanControl/smc-command/smc -k BCLM -w 50
+exit
