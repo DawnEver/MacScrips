@@ -14,7 +14,7 @@ as title.
 
 1. open Terminal and change work directory to *./video2gif*
 
-2. edit *./video2gif/timetable.txt* ,each video clip with a line `[begin time],[last time]`.
+2. edit *./video2gif/timetable.txt* ,each video clip with a line `[begin time],[duration]`.
     you can add '#' ahead to skip a line
 
 3. run `video2gif [videoPath] ("[ffmpeg params]")` and wait,open folder *./output* for results.

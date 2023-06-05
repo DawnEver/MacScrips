@@ -147,3 +147,5 @@ fonts/
 
 .config
 **/password.txt
+
+ffmpeg-tools/localScripts/

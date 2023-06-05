@@ -4,4 +4,4 @@
 #00:01:40,21
 #00:02:03,18
 #00:02:22,20
-#[hours:minutes:seconds],[lastingTime]
+#[hours:minutes:seconds],[duration]
