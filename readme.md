@@ -4,7 +4,7 @@ I have been tired with repeated clicking on mac for long.As a geek,it's time to 
 
 I walked to shell first,and have many problems solved and many unsolved.Then I explored mac scripts and Automator.
 
-As a collection of automatic scripts,many problems in this repo may have a similar solution on the Internet  and in fact I search the Internet  too
+As a collection of automatic scripts,many problems in this repo may have a similar solution on the Internet and in fact I search the Internet too
 
 ## Attention 
 
@@ -28,10 +28,12 @@ Follow README.md in each folder
 **mac scripts**
 - [to be continued]
 
+**python**
+- DeWatermark
 
 ## Maintainers
 
-[@LinXu](https://github.com/DawnEver)
+[@Bennett](https://github.com/DawnEver)
 
 ## Contributing
 
